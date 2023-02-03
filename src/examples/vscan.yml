@@ -1,0 +1,38 @@
+description: >
+  This orb can be used to generate vulnarability report of a container using SAAS Api.The generated report will be uploaded to Circle CI Artifact.
+# Provide a use-case based example for using this orb.
+# Everything in the `usage` section will be displayed in the orb registry.
+# Comments are not retained.
+usage:
+  version: 2.1
+  orbs:
+    <orb-name>: slimdevops/slim-scanner@0.0.1
+  parameters:
+    image-name:
+      description: Image to be scanned.
+      type: string
+    image-connector:
+      description: Connector.
+      type: string
+      default: dockerhub.public #Connector used by slim to get the image eg:dockerhub.public
+    cimg-tag:
+      description: Which tag to be used for cimg/base.
+      type: string
+      default: current #Which tag to be used for cimg eg:  cimg/base:current
+  jobs:
+    build:
+      docker:
+        - image: cimg/base:<< pipeline.parameters.cimg-tag >>
+      steps:
+        - checkout
+        - <orb-name>/vscan:
+            imageName: << pipeline.parameters.image-name >>
+            imageConnector: << pipeline.parameters.image-connector >>
+            cimgTag: << pipeline.parameters.cimg-tag >>
+        - store_artifacts:
+            path: /tmp/artifact-vscan
+            destination: "Filename for artifact"
+  workflows:
+    use-my-orb:
+      jobs:
+        - build

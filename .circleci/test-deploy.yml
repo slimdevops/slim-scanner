@@ -2,7 +2,19 @@ version: 2.1
 orbs:
   slim-scanner: slimdevops/slim-scanner@dev:<<pipeline.git.revision>>
   orb-tools: circleci/orb-tools@11.5
-
+parameters:
+  image-name:
+    description: Image to be scanned.
+    type: string
+    default: node:latest #Name of the image to be scanned eg:node
+  image-connector:
+    description: Connector.
+    type: string
+    default: dockerhub.public #Connector used by slim to get the image eg:dockerhub.public
+  cimg-tag:
+    description: Which tag to be used for cimg/base.
+    type: string
+    default: current #Which tag to be used for cimg eg:  cimg/base:current
 filters: &filters
   tags:
     only: /.*/
@@ -12,11 +24,27 @@ jobs:
   # You may want to add additional validation steps to ensure the commands are working as expected.
   command-tests:
     docker:
-      - image: cimg/base:current
+      - image: cimg/base:<< pipeline.parameters.cimg-tag >>
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - slim-scanner/greet
+      - slim-scanner/xray:
+          imageName: << pipeline.parameters.image-name >>
+          imageConnector: << pipeline.parameters.image-connector >>
+          cimgTag: << pipeline.parameters.cimg-tag >>
+      - store_artifacts:
+          path: /tmp/artifact-xray
+          destination: xray-json
+      - slim-scanner/vscan:
+          imageName: << pipeline.parameters.image-name >>
+          imageConnector: << pipeline.parameters.image-connector >>
+          cimgTag: << pipeline.parameters.cimg-tag >>
+      - store_artifacts:
+          path: /tmp/artifact-vscan
+          destination: vscan-json
+      - store_artifacts:
+          path: /tmp/artifact-readme
+          destination: readme.html
 workflows:
   test-deploy:
     jobs:
