@@ -35,10 +35,6 @@ nameSpace="${namespace}"
 entity="${repository}"
 apiDomain="https://platform.slim.dev"
 
-IFS='.'
-read -ra array <<< "${connectorId}"
-
-
 
 echo Starting Vulnerability Scan : "${PARAM_IMAGE}"
 
