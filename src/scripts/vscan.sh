@@ -38,7 +38,7 @@ apiDomain="https://platform.slim.dev"
 IFS='.'
 read -ra array <<< "${connectorId}"
 connectorPlatform=${array[0]}
-echo "${connectorPlatform}"
+
 
 echo Starting Vulnerability Scan : "${PARAM_IMAGE}"
 
@@ -97,10 +97,10 @@ if [ "${secondPart}" = "public" ];then
 else
   urlProfile="https://portal.slim.dev/home/xray/${connectorData}%3A%2F%2F${connectorId}%2F${nameSpace}%2F${entity}%3A${tag}%40sha256%3A${shaId}"
 fi
-echo "${shaId}"
+
 echo "${vscanReport}" >> /tmp/artifact-vscan;#Report will be added to Artifact
 readmeData="${README}"
-echo "${SLIM_COLLECTIONS_ID}"
+
 favcollectionUrl="https://portal.slim.dev/collections/${SLIM_COLLECTIONS_ID}"
 readmeDataUpdated=${readmeData//__FAVCOLLECTION__/${favcollectionUrl}}
 readmeDataUpdated=${readmeDataUpdated//__PROFILE__/${urlProfile}}
