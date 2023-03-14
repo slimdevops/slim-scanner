@@ -1,26 +1,37 @@
-# Orb Source
+# Slim Scanner Circle CI Orb
+This public Orb from Slim.AI runs a vulnerability scan, creates a container profile, and makes a report for you to easily access these artifacts from the CircleCI pipeline. Find a collection of these images in the Slim.AI platform, to analyze overtime as you build and the project scales. 
 
-Orbs are shipped as individual `orb.yml` files, however, to make development easier, it is possible to author an orb in _unpacked_ form, which can be _packed_ with the CircleCI CLI and published.
+## Requirements
+- CircleCI account 
+- Slim Developer Platform account (Free at [www.slim.ai](https://www.slim.ai))
 
-The default `.circleci/config.yml` file contains the configuration code needed to automatically pack, test, and deploy any changes made to the contents of the orb source in this directory.
+## Quickstart Resources: 
+- [Blog: Node.JS Example](https://www.slim.ai/blog/introducing-slim-s-scanner-orb-for-circleci)
+- [GitHub Repo: Node.JS Example](https://github.com/slimdevops/orb-demo)
 
-## @orb.yml
+## Project Environment Variables
+Your project will need the following environment variables added to your CircleCI environment:
 
-This is the entry point for our orb "tree", which becomes our `orb.yml` file later.
+```
+DOCKERHUB_PASSWORD=
+DOCKERHUB_USERNAME=
+FAV_COLLECTION_ID=
+ORG_ID=
+SAAS_KEY=
+```
 
-Within the `@orb.yml` we generally specify 4 configuration keys
+- `DOCKERHUB_PASSWORD` and `DOCKERHUB_USERNAME` are your Docker Hub credentials. Sign up [here](https://hub.docker.com/signup)
+- `FAV_COLLECTION_ID`, `ORG_ID`, and `SAAS_KEY` are found in the Slim Platform, from your Profile Settings, in the Tokens and Organization tabs. Sign up [here](https://portal.slim.dev/login)
 
-**Keys**
 
-1. **version**
-    Specify version 2.1 for orb-compatible configuration `version: 2.1`
-2. **description**
-    Give your orb a description. Shown within the CLI and orb registry
-3. **display**
-    Specify the `home_url` referencing documentation or product URL, and `source_url` linking to the orb's source repository.
-4. **orbs**
-    (optional) Some orbs may depend on other orbs. Import them here.
+## About the `.circleci/config.yml` file
+The Slim.AI Orb is imported into your project here along with other `orbs`, with a organization identifier and orb slug, for example `slimdevops/slim-scanner@0.0.1`. Other notable areas of the configuration include:
+- `parameters` contain CircleCI Orb meta information about the Docker image and connector used by Slim.AI
+- `jobs` defines `publishLatestToHub` which runs the scans and creates artifacts to be stored in Slim Platform
+- `steps` run commands for vulnerability scan,  takes a snapshot of the container image, and generates artifacts including the results contained in `readme.html`
 
-## See:
- - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)
- - [Reusable Configuration](https://circleci.com/docs/2.0/reusing-config)
+## CircleCI Artifacts
+With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `XRay.json` and vulnerability scan `vuln.json`. Start with the `readme.html` to navigate to your collections of images and reports.
+
+## Slim Community
+For more information about configuring containers, vulnerability scans, or this orb example, check out the [SlimDevOps Community Discord](https://discord.com/invite/uBttmfyYNB), [SlimDevOps Community Forums](https://community.slim.ai/) and the [blog](https://www.slim.ai/blog/).

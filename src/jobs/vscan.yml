@@ -1,5 +1,5 @@
 description: >
-  This job will generate vulnarability scan report of a given container using SAAS Api.The generated report will be uploaded to Circle CI Artifact.
+  This job generates anaggregated Vulnerability Report for a given container build using the Slim Developer Platform. The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document.
 # What will this job do?
 
 docker:
@@ -8,14 +8,14 @@ docker:
 parameters:
   imageName:
     type: string
-    description: "Container to scan.eg: library/node:latest"
+    description: "Container image to scan, e.g. library/node:latest"
   imageConnector:
     type: string
-    description: "Connector.eg: dockerhub.public"
+    description: "Registry Connect from Slim platform, e.g. dockerhub.public"
   cimgTag:
     type: string
     default: "current"
-    description: "Which tag to be used for cimg/base"
+    description: "Image tag to be used for the CircleCI base image (e.g., cimg/base)."
 steps:
   - vscan:
       imageName: << parameters.imageName >>

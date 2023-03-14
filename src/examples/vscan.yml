@@ -1,5 +1,5 @@
 description: >
-  This orb can be used to generate vulnarability report of a container using SAAS Api.The generated report will be uploaded to Circle CI Artifact.
+  This orb can be used to generate an aggregated Vulnerability Report for a given container build using the Slim Developer Platform. The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document.
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
@@ -9,14 +9,14 @@ usage:
     <orb-name>: slimdevops/slim-scanner@0.0.1
   parameters:
     image-name:
-      description: Image to be scanned.
+      description: Container image to be scanned
       type: string
     image-connector:
-      description: Connector.
+      description: Registry Connector name from Slim platform (i.e., `dockerhub.public`)
       type: string
       default: dockerhub.public #Connector used by slim to get the image eg:dockerhub.public
     cimg-tag:
-      description: Which tag to be used for cimg/base.
+      description: Image tag to be used for the CircleCI base image (i.e., cimg/base).
       type: string
       default: current #Which tag to be used for cimg eg:  cimg/base:current
   jobs:

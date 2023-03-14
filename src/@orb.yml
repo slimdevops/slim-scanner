@@ -1,16 +1,10 @@
 version: 2.1
 
 description: >
-  This will help users to generate xray and vulnarability report for a given container and upload it to the circle CI artifact.
-  After this process the container will be added to the Favourite collection in Slim Portal.
-# What will your orb allow users to accomplish?
-# Descriptions should be short, simple, and informative.
+  This orb can be used to generate a Container Profile ("X-Ray") and aggregated Vulnerability Report for a given container build using the Slim Developer Platform. The generated reports will be uploaded to CircleCI's Artifacts tab as JSON documents, and the container image will also be added to the user's "Favorites" collection in the Slim portal for easy access in the future.
 
-# This information will be displayed in the orb registry and is not mandatory.
 display:
-  home_url: "https://www.slim.ai/docs"
+  home_url: "https://www.slim.ai/blog/introducing-slim-s-scanner-orb-for-circleci"
   source_url: "https://github.com/slimdevops/slim-scanner"
 
-# If your orb requires other orbs, you can import them like this. Otherwise remove the "orbs" stanza.
-# orbs:
-#  hello: circleci/hello-build@0.0.5
+

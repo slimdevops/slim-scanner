@@ -1,19 +1,18 @@
 description: >
-  This command scans a container and generates a X-ray report.
-  After generating the X-ray report,the container is added to favourite section in Saas portal.
+  This command generates a Container Profile ("X-Ray") report for a given container build using the Slim Developer Platform. The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document, and the container image will also be added to the user's "Favorites" collection in the Slim portal for easy access in the future.
 # #What will this command do?
 # Descriptions should be short, simple, and clear.
 parameters:
   imageName:
     type: string
-    description: "Container to scan.eg: library/node:latest"
+    description: "Container image to scan, e.g. library/node:latest"
   imageConnector:
     type: string
-    description: "Connector.eg: dockerhub.public"
+    description: "Registry Connect from Slim platform, e.g. dockerhub.public"
   cimgTag:
     type: string
     default: "current"
-    description: "Which tag to be used for cimg/base"
+    description: "Image tag to be used for the CircleCI base image (e.g., cimg/base)."
 steps:
   - run:
       environment:

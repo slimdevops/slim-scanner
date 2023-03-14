@@ -1,24 +1,21 @@
 description: >
-  This orb can be used to generate xray report of a container using SAAS Api.
-  The generated report will be uploaded to Circle CI Artifact.After this process the container will be added to the Favourite collection in Slim Portal.
-# Provide a use-case based example for using this orb.
-# Everything in the `usage` section will be displayed in the orb registry.
-# Comments are not retained..
+  This orb can be used to generate a Container Profile ("X-Ray") and aggregated Vulnerability Report for a given container build using the Slim Developer Platform. The generated reports will be uploaded to CircleCI's Artifacts tab as JSON documents, and the container image will also be added to the user's "Favorites" collection in the Slim portal for easy access in the future.
+
 usage:
   version: 2.1
   orbs:
     <orb-name>: slimdevops/slim-scanner@0.0.1
   parameters:
     image-name:
-      description: Image to be scanned.
+      description: Container image to be scanned
       type: string
       default: library/node:latest #Name of the image to be scanned eg:node
     image-connector:
-      description: Connector.
+      description: Registry Connector name from Slim platform (e.g., `dockerhub.public`)
       type: string
       default: dockerhub.public #Connector used by slim to get the image eg:dockerhub.public
     cimg-tag:
-      description: Which tag to be used for cimg/base.
+      description: Image tag to be used for the CircleCI base image (e.g., cimg/base).
       type: string
       default: current #Which tag to be used for cimg eg:  cimg/base:current
   jobs:
