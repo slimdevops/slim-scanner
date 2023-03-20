@@ -4,7 +4,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    <orb-name>: slimdevops/slim-scanner@0.0.1
+    slim-scanner: slimdevops/slim-scanner@0.0.1
   parameters:
     image-name:
       description: Container image to be scanned
@@ -24,14 +24,14 @@ usage:
         - image: cimg/base:<< pipeline.parameters.cimg-tag >>
       steps:
         - checkout
-        - <orb-name>/xray:
+        - slim-scanner/xray:
             imageName: << pipeline.parameters.image-name >>
             imageConnector: << pipeline.parameters.image-connector >>
             cimgTag: << pipeline.parameters.cimg-tag >>
         - store_artifacts:
             path: /tmp/artifact-xray
             destination: "Filename for artifact"
-        - <orb-name>/vscan:
+        - slim-scanner/vscan:
             imageName: << pipeline.parameters.image-name >>
             imageConnector: << pipeline.parameters.image-connector >>
             cimgTag: << pipeline.parameters.cimg-tag >>
