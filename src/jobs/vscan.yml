@@ -1,5 +1,5 @@
 description: >
-  Generates anaggregated Vulnerability Report for a given container build using the Slim Developer Platform. The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document.
+  Generates an aggregated Vulnerability Report for a given container build using the Slim Developer Platform. The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document.
 # What will this job do?
 
 docker:
