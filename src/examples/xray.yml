@@ -6,7 +6,7 @@ description: >
 usage:
   version: 2.1
   orbs:
-    <orb-name>: slimdevops/slim-scanner@0.0.1
+    slim-scanner: slimdevops/slim-scanner@0.0.1
   parameters:
     image-name:
       description: Container image to be scanned
