@@ -1,7 +1,7 @@
 [![CircleCI Build Status](https://circleci.com/gh/slimdevops/slim-scanner.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/slimdevops/slim-scanner) [![CircleCI Orb Version](https://badges.circleci.com/orbs/slimdevops/slim-scanner.svg)](https://circleci.com/orbs/registry/orb/slimdevops/slim-scanner) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/slimdevops/slim-scanner/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 # Slim Scanner Circle CI Orb
-This public Orb from Slim.AI runs a vulnerability scan, creates a container profile, and makes a report for you to easily access these artifacts from the CircleCI pipeline. Find a collection of these images in the Slim.AI platform, to analyze overtime as you build and the project scales. 
+The Slim Scanner provides vulnerability scans, container profiles, and lets you to easily access these artifacts from the CircleCI pipeline. Find a collection of these images in the Slim.AI platform, to analyze overtime as you build and the project scales. 
 
 ## Requirements
 - CircleCI account 
