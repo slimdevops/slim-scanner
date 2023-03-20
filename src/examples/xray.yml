@@ -26,7 +26,7 @@ usage:
         - image: cimg/base:<< pipeline.parameters.cimg-tag >>
       steps:
         - checkout
-        - <orb-name>/xray:
+        - slim-scanner/xray:
             imageName: << pipeline.parameters.image-name >>
             imageConnector: << pipeline.parameters.image-connector >>
             cimgTag: << pipeline.parameters.cimg-tag >>
