@@ -25,32 +25,16 @@ jobs:
   command-tests:
     docker:
       - image: cimg/base:<< pipeline.parameters.cimg-tag >>
-    steps:
-      - checkout
-      # Run your orb's commands to validate them.
-      - slim-scanner/xray:
-          imageName: << pipeline.parameters.image-name >>
-          imageConnector: << pipeline.parameters.image-connector >>
-          cimgTag: << pipeline.parameters.cimg-tag >>
-      - store_artifacts:
-          path: /tmp/artifact-xray
-          destination: xray-json
-      - slim-scanner/vscan:
-          imageName: << pipeline.parameters.image-name >>
-          imageConnector: << pipeline.parameters.image-connector >>
-          cimgTag: << pipeline.parameters.cimg-tag >>
-      - store_artifacts:
-          path: /tmp/artifact-vscan
-          destination: vscan-json
-      - store_artifacts:
-          path: /tmp/artifact-readme
-          destination: readme.html
+
 workflows:
   test-deploy:
     jobs:
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
-      - command-tests:
+      - slim-scanner/vscan:
           filters: *filters
+          imageName: << pipeline.parameters.image-name >>
+          imageConnector: << pipeline.parameters.image-connector >>
+          cimgTag: << pipeline.parameters.cimg-tag >>
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
@@ -59,7 +43,7 @@ workflows:
           pub-type: production
           requires:
             - orb-tools/pack
-            - command-tests
+            - slim-scanner/vscan
           context: orb-publishing
           filters:
             branches:
