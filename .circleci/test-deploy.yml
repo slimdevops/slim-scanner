@@ -25,7 +25,7 @@ workflows:
   test-deploy:
     jobs:
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
-      - slim-scanner/vscan:
+      - slim-scanner/scan:
           filters: *filters
           imageName: << pipeline.parameters.image-name >>
           imageConnector: << pipeline.parameters.image-connector >>
