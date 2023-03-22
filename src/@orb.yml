@@ -3,7 +3,7 @@ version: 2.1
 description: >
   The Slim Scanner allows you to better assess your container security every time you build a new container.
   It provides a Container Profile ("X-Ray") and aggregated Vulnerability Report for a given container build using the Slim Developer Platform.
-  The generated reports will be uploaded to CircleCI's Artifacts tab as JSON documents, and the container image will also be added to the user's 
+  The generated reports will be uploaded to CircleCI's Artifacts tab as JSON documents, and the container image will also be added to the user's
   "Favorites" collection in the Slim portal for easy access in the future.
 
 display:
