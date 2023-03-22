@@ -8,10 +8,6 @@ parameters:
   imageConnector:
     type: string
     description: "Registry Connect from Slim platform, e.g. dockerhub.public"
-  cimgTag:
-    type: string
-    default: "current"
-    description: "Image tag to be used for the CircleCI base image (e.g., cimg/base)."
 steps:
   - run:
       environment:
