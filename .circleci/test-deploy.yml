@@ -38,7 +38,7 @@ workflows:
           pub-type: production
           requires:
             - orb-tools/pack
-            - slim-scanner/vscan
+            - slim-scanner/scan
           context: orb-publishing
           filters:
             branches:
