@@ -1,5 +1,6 @@
 description: >
-  This command generates a Container Profile ("X-Ray") report for a given container build using the Slim Developer Platform. The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document, and the container image will also be added to the user's "Favorites" collection in the Slim portal for easy access in the future.
+  This command generates a Container Profile ("X-Ray") report for a given container build using the Slim Developer Platform. 
+  The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document, and the container image will also be added to the user's "Favorites" collection in the Slim portal for easy access in the future.
 # #What will this command do?
 # Descriptions should be short, simple, and clear.
 parameters:

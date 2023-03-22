@@ -1,5 +1,6 @@
 description: >
-  This command can be used to generate an aggregated Vulnerability Report for a given container build using the Slim Developer Platform. The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document.
+  This command can be used to generate an aggregated Vulnerability Report for a given container build using the Slim Developer Platform. 
+  The generated report will be uploaded to CircleCI's Artifacts tab as a JSON document.
 parameters:
   imageName:
     type: string
