@@ -19,12 +19,7 @@ filters: &filters
   tags:
     only: /.*/
 
-jobs:
-  # Create a job to test the commands of your orbs.
-  # You may want to add additional validation steps to ensure the commands are working as expected.
-  command-tests:
-    docker:
-      - image: cimg/base:<< pipeline.parameters.cimg-tag >>
+
 
 workflows:
   test-deploy:
