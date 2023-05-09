@@ -84,9 +84,4 @@ echo "${xrayReport}" >> /tmp/artifact-xray;#Uploading report to Artifact
 
 
 
-#Adding the container to Favourites
-curl -u ":${SLIM_API_TOKEN}" -X POST "${apiDomain}/orgs/${SLIM_ORG_ID}/collections/${SLIM_COLLECTIONS_ID}/images//pins" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"scope\":\"tag\",\"connector\":\"${connectorId}\",\"entity\":\"${entity}\",\"namespace\":\"${nameSpace}\",\"version\":\"${tag}\",\"digest\":\"\",\"os\":\"linux\",\"arch\":\"amd64\"}"
-
-
-
 

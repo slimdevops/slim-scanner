@@ -15,7 +15,6 @@ Your project will need the following environment variables added to your CircleC
 ```
 DOCKERHUB_PASSWORD=
 DOCKERHUB_USERNAME=
-FAV_COLLECTION_ID=
 ORG_ID=
 SAAS_KEY=
 ```
