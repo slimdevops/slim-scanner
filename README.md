@@ -22,7 +22,7 @@ SAAS_KEY=
 ```
 
 - `DOCKERHUB_PASSWORD` and `DOCKERHUB_USERNAME` are your Docker Hub credentials. Sign up [here](https://hub.docker.com/signup)
-- `FAV_COLLECTION_ID`, `ORG_ID`, and `SAAS_KEY` are found in the Slim Platform, from your Profile Settings, in the Tokens and Organization tabs. Sign up [here](https://portal.slim.dev/login)
+- `ORG_ID`, and `SAAS_KEY` are found in the Slim Platform, from your Profile Settings, in the Tokens and Organization tabs. Sign up [here](https://portal.slim.dev/login)
 
 
 ## About the `.circleci/config.yml` file
