@@ -97,7 +97,7 @@ fi
 echo "${vscanReport}" >> /tmp/artifact-vscan;#Report will be added to Artifact
 readmeData="${README}"
 
-readmeData=${readmeDataUpdated//__PROFILE__/${urlProfile}}
+readmeDataUpdated=${readmeData//__PROFILE__/${urlProfile}}
 echo "${readmeDataUpdated}" >> /tmp/artifact-readme;
 
 
