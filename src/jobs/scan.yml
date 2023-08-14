@@ -24,7 +24,7 @@ steps:
       imageName: << parameters.imageName >>
   - store_artifacts:
       path: /tmp/artifact-vscan
-      destination: vscan.json
+      destination: vuln.json
   - store_artifacts:
       path: /tmp/artifact-readme
       destination: readme.html

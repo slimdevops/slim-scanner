@@ -30,7 +30,7 @@ The Slim.AI Orb is imported into your project here along with other `orbs`, with
 - `steps` execute commands for vulnerability scanning, take a snapshot of the container image, run Xray analysis, and generate artifacts, which include the results stored in readme.html.
 
 ## CircleCI Artifacts
-With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `XRay.json` and vulnerability scan `vuln.json`. Start with the `readme.html` to navigate to your collections of images and reports.
+With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `xray.json` and vulnerability scan `vuln.json`. Start with the `readme.html` to navigate to your collections of images and reports.
 
 ## Slim Community
 For more information about configuring containers, vulnerability scans, or this orb example, check out the [SlimDevOps Community Discord](https://discord.com/invite/uBttmfyYNB), [SlimDevOps Community Forums](https://community.slim.ai/) and the [blog](https://www.slim.ai/blog/).
