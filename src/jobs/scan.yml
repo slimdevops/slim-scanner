@@ -19,12 +19,12 @@ steps:
       imageName: << parameters.imageName >>
   - store_artifacts:
       path: /tmp/artifact-xray
-      destination: xray-json
+      destination: xray.json
   - vscan:
       imageName: << parameters.imageName >>
   - store_artifacts:
       path: /tmp/artifact-vscan
-      destination: vscan-json
+      destination: vscan.json
   - store_artifacts:
       path: /tmp/artifact-readme
       destination: readme.html

@@ -15,21 +15,19 @@ The Slim Scanner provides vulnerability scans, container profiles, and lets you 
 Your project will need the following environment variables added to your CircleCI environment:
 
 ```
-DOCKERHUB_PASSWORD=
-DOCKERHUB_USERNAME=
 ORG_ID=
 SAAS_KEY=
+CONNECTOR_ID=
 ```
 
-- `DOCKERHUB_PASSWORD` and `DOCKERHUB_USERNAME` are your Docker Hub credentials. Sign up [here](https://hub.docker.com/signup)
-- `ORG_ID`, and `SAAS_KEY` are found in the Slim Platform, from your Profile Settings, in the Tokens and Organization tabs. Sign up [here](https://portal.slim.dev/login)
+- `ORG_ID`, and `SAAS_KEY` are found in the Slim Platform, from your Profile Settings and `CONNECTOR_ID` can be found in Connectors section, in the Tokens and Organization tabs. Sign up [here](https://portal.slim.dev/login)
 
 
 ## About the `.circleci/config.yml` file
 The Slim.AI Orb is imported into your project here along with other `orbs`, with a organization identifier and orb slug, for example `slimdevops/slim-scanner@0.0.1`. Other notable areas of the configuration include:
-- `parameters` contain CircleCI Orb meta information about the Docker image and connector used by Slim.AI
-- `jobs` defines `publishLatestToHub` which runs the scans and creates artifacts to be stored in Slim Platform
-- `steps` run commands for vulnerability scan,  takes a snapshot of the container image, and generates artifacts including the results contained in `readme.html`
+- `parameters` contain CircleCI Orb meta information about the Docker image intended for scanning.
+- `jobs` define the execution of scans and the generation of outputs within the CircleCI environment.
+- `steps` execute commands for vulnerability scanning, take a snapshot of the container image, run Xray analysis, and generate artifacts, which include the results stored in readme.html.
 
 ## CircleCI Artifacts
 With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `XRay.json` and vulnerability scan `vuln.json`. Start with the `readme.html` to navigate to your collections of images and reports.
