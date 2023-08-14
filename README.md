@@ -15,12 +15,12 @@ The Slim Scanner provides vulnerability scans, container profiles, and lets you 
 Your project will need the following environment variables added to your CircleCI environment:
 
 ```
-ORG_ID=
-SAAS_KEY=
+SLIM_ORG_ID=
+SLIM_API_TOKEN=
 CONNECTOR_ID=
 ```
 
-- `ORG_ID`, and `SAAS_KEY` are found in the Slim Platform, from your Profile Settings and `CONNECTOR_ID` can be found in Connectors section, in the Tokens and Organization tabs. Sign up [here](https://portal.slim.dev/login)
+- `SLIM_ORG_ID`, and `SLIM_API_TOKEN` are found in the Slim Platform, from your Profile Settings , in the Tokens and Organization tabs and `CONNECTOR_ID` can be created in the Connectors section. Sign up [here](https://portal.slim.dev/login)
 
 
 ## About the `.circleci/config.yml` file
@@ -30,7 +30,7 @@ The Slim.AI Orb is imported into your project here along with other `orbs`, with
 - `steps` execute commands for vulnerability scanning, take a snapshot of the container image, run Xray analysis, and generate artifacts, which include the results stored in readme.html.
 
 ## CircleCI Artifacts
-With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `xray.json` and vulnerability scan `vuln.json`. Start with the `readme.html` to navigate to your collections of images and reports.
+With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `xray.json` and vulnerability scan `vuln.json`. Begin by accessing the `readme.html` to navigate to the reports..
 
 ## Slim Community
 For more information about configuring containers, vulnerability scans, or this orb example, check out the [SlimDevOps Community Discord](https://discord.com/invite/uBttmfyYNB), [SlimDevOps Community Forums](https://community.slim.ai/) and the [blog](https://www.slim.ai/blog/).
