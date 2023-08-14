@@ -7,14 +7,10 @@ parameters:
   imageName:
     type: string
     description: "Container image to scan, e.g. library/node:latest"
-  imageConnector:
-    type: string
-    description: "Registry Connect from Slim platform, e.g. dockerhub.public"
 steps:
   - run:
       environment:
         PARAM_IMAGE: <<parameters.imageName>>
-        IMAGE_CONNECTOR: <<parameters.imageConnector>>
         XRAY_REQUEST: <<include(scripts/xray_request.json)>>
       name: Engine Execution - X-Ray
       command: <<include(scripts/xray.sh)>>

@@ -7,10 +7,6 @@ parameters:
     description: Image to be scanned.
     type: string
     default: node:latest #Name of the image to be scanned eg:node
-  image-connector:
-    description: Connector.
-    type: string
-    default: dockerhub.public #Connector used by slim to get the image eg:dockerhub.public
   cimg-tag:
     description: Which tag to be used for cimg/base.
     type: string
@@ -28,7 +24,6 @@ workflows:
           name: Scanning Container
           filters: *filters
           imageName: << pipeline.parameters.image-name >>
-          imageConnector: << pipeline.parameters.image-connector >>
           cimgTag: << pipeline.parameters.cimg-tag >>
       - orb-tools/pack:
           filters: *filters

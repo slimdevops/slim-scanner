@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+IMAGE_CONNECTOR="${CONNECTOR_ID}"
 string="${IMAGE_CONNECTOR}/${PARAM_IMAGE}"
 
 match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')

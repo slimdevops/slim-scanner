@@ -9,9 +9,6 @@ parameters:
   imageName:
     type: string
     description: "Container to scan.eg: library/node:latest"
-  imageConnector:
-    type: string
-    description: "Connector.eg: dockerhub.public"
   cimgTag:
     type: string
     default: "current"
@@ -20,13 +17,11 @@ steps:
   - checkout
   - xray:
       imageName: << parameters.imageName >>
-      imageConnector: << parameters.imageConnector >>
   - store_artifacts:
       path: /tmp/artifact-xray
       destination: xray-json
   - vscan:
       imageName: << parameters.imageName >>
-      imageConnector: << parameters.imageConnector >>
   - store_artifacts:
       path: /tmp/artifact-vscan
       destination: vscan-json
