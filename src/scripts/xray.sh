@@ -75,7 +75,7 @@ printf 'XRAY Completed state= %s '"$executionStatus \n"
 #Fetching the X-ray Report
 echo Fetching XRAY report : "${PARAM_IMAGE}"
 
-response=$(curl -L -u ":${SLIM_API_TOKEN}"-X 'GET' \
+response=$(curl -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
   "${apiDomain}/orgs/${SLIM_ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
