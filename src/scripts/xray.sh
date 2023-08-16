@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE_CONNECTOR="${CONNECTOR_ID}"
+IMAGE_CONNECTOR="${CONNECTOR_IDd}"
 if [ -z "$IMAGE_CONNECTOR" ]; then
     echo "CONNECTOR_ID missing. Please add CONNECTOR_ID to the environment variable section."
     exit 1
