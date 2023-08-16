@@ -75,12 +75,13 @@ printf 'XRAY Completed state= %s '"$executionStatus \n"
 #Fetching the X-ray Report
 echo Fetching XRAY report : "${PARAM_IMAGE}"
 
-xrayReport=$(curl -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
+response=$(curl -L -u ":${SLIM_API_TOKEN}" -w '%{http_code}' -X 'GET' \
   "${apiDomain}/orgs/${SLIM_ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
-response_code=$(tail -n1 <<< "$xrayReport")  # Extract the last line (HTTP response code)
+response_code=$(tail -n1 <<< "$response")  # Extract the last line (HTTP response code)
+xrayReport=$(sed '$ d' <<< "$response")
 echo "$response_code"
 if [ "$response_code" != "200" ]; then
     echo "Error: Failed to fetch xrayReport. HTTP response code: $response_code"
