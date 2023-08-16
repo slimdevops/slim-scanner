@@ -1,5 +1,17 @@
 #!/bin/bash
-IMAGE_CONNECTOR="${CONNECTOR_ID}"
+IMAGE_CONNECTOR="${CONNECTOR_IDd}"
+if [ -z "$IMAGE_CONNECTOR" ]; then
+    echo "CONNECTOR_ID missing. Please add CONNECTOR_ID to the environment variable section."
+    exit 1
+fi
+if [ -z "${SLIM_API_TOKEN}" ]; then
+    echo "SLIM_API_TOKEN missing. Please add SLIM_API_TOKEN to the environment variable section."
+    exit 1
+fi
+if [ -z "${SLIM_ORG_ID}" ]; then
+    echo "SLIM_ORG_ID missing. Please add SLIM_ORG_ID to the environment variable section."
+    exit 1
+fi
 string="${IMAGE_CONNECTOR}/${PARAM_IMAGE}"
 
 match=$(echo "${string}" | grep -oP '^(?:([^/]+)/)?(?:([^/]+)/)?([^@:/]+)(?:[@:](.+))?$')
