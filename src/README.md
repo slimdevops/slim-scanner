@@ -12,25 +12,22 @@ This public Orb from Slim.AI runs a vulnerability scan, creates a container prof
 ## Project Environment Variables
 Your project will need the following environment variables added to your CircleCI environment:
 
-```
-DOCKERHUB_PASSWORD=
-DOCKERHUB_USERNAME=
-ORG_ID=
-SAAS_KEY=
-```
 
-- `DOCKERHUB_PASSWORD` and `DOCKERHUB_USERNAME` are your Docker Hub credentials. Sign up [here](https://hub.docker.com/signup)
-- `ORG_ID`, and `SAAS_KEY` are found in the Slim Platform, from your Profile Settings, in the Tokens and Organization tabs. Sign up [here](https://portal.slim.dev/login)
+- `CONNECTOR_ID`: You can find your `CONNECTOR_ID` in the "My Registries" section of the Slim Platform.
+- `SLIM_ORG_ID`: Your `SLIM_ORG_ID` can be located in the "Personal Information" section, specifically under "Organizations" in the Slim Platform.
+- `SLIM_API_TOKEN`: To obtain your `SLIM_API_TOKEN`, navigate to the "Personal Information" section in the Slim Platform and then proceed to the "Tokens" subsection.  
+
+Sign up [here](https://portal.slim.dev/login)
 
 
 ## About the `.circleci/config.yml` file
 The Slim.AI Orb is imported into your project here along with other `orbs`, with a organization identifier and orb slug, for example `slimdevops/slim-scanner@0.0.1`. Other notable areas of the configuration include:
-- `parameters` contain CircleCI Orb meta information about the Docker image and connector used by Slim.AI
-- `jobs` defines `publishLatestToHub` which runs the scans and creates artifacts to be stored in Slim Platform
-- `steps` run commands for vulnerability scan,  takes a snapshot of the container image, and generates artifacts including the results contained in `readme.html`
+- `parameters` contain CircleCI Orb meta information about the Docker image intended for scanning.
+- `jobs` define the execution of scans and the generation of outputs within the CircleCI environment.
+- `steps` execute commands for vulnerability scanning, take a snapshot of the container image, run Xray analysis, and generate artifacts, which include the results stored in readme.html.
 
 ## CircleCI Artifacts
-With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `XRay.json` and vulnerability scan `vuln.json`. Start with the `readme.html` to navigate to your collections of images and reports.
+With each project build, the orb will generate Artifacts viewable in your CircleCI workflows. Find the JSON output of the container profile `xray.json` and vulnerability scan `vuln.json`. Begin by accessing the `readme.html` to navigate to the reports..
 
 ## Slim Community
 For more information about configuring containers, vulnerability scans, or this orb example, check out the [SlimDevOps Community Discord](https://discord.com/invite/uBttmfyYNB), [SlimDevOps Community Forums](https://community.slim.ai/) and the [blog](https://www.slim.ai/blog/).

@@ -14,13 +14,12 @@ The Slim Scanner provides vulnerability scans, container profiles, and lets you 
 ## Project Environment Variables
 Your project will need the following environment variables added to your CircleCI environment:
 
-```
-SLIM_ORG_ID=
-SLIM_API_TOKEN=
-CONNECTOR_ID=
-```
 
-- `SLIM_ORG_ID`, and `SLIM_API_TOKEN` are found in the Slim Platform, from your Profile Settings , in the Tokens and Organization tabs and `CONNECTOR_ID` can be created in the Connectors section. Sign up [here](https://portal.slim.dev/login)
+- `CONNECTOR_ID`: You can find your `CONNECTOR_ID` in the "My Registries" section of the Slim Platform.
+- `SLIM_ORG_ID`: Your `SLIM_ORG_ID` can be located in the "Personal Information" section, specifically under "Organizations" in the Slim Platform.
+- `SLIM_API_TOKEN`: To obtain your `SLIM_API_TOKEN`, navigate to the "Personal Information" section in the Slim Platform and then proceed to the "Tokens" subsection.  
+
+Sign up [here](https://portal.slim.dev/login)
 
 
 ## About the `.circleci/config.yml` file
