@@ -12,5 +12,4 @@ usage:
       jobs:
         - slim-scanner/scan:
             imageName: << pipeline.parameters.image-name >>
-            imageConnector: << pipeline.parameters.image-connector >>
             cimgTag: << pipeline.parameters.cimg-tag >>

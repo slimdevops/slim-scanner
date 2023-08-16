@@ -80,6 +80,12 @@ xrayReport=$(curl -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
 
+response_code=$(tail -n1 <<< "$xrayReport")  # Extract the last line (HTTP response code)
+echo "$response_code"
+if [ "$response_code" != "200" ]; then
+    echo "Error: Failed to fetch xrayReport. HTTP response code: $response_code"
+    exit 2
+fi
 echo "${xrayReport}" >> /tmp/artifact-xray;#Uploading report to Artifact
 
 
