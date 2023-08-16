@@ -75,10 +75,19 @@ printf 'XRAY Completed state= %s '"$executionStatus \n"
 #Fetching the X-ray Report
 echo Fetching XRAY report : "${PARAM_IMAGE}"
 
-xrayReport=$(curl -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
+response=$(curl -s -o - -w "%{http_code}" -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
   "${apiDomain}/orgs/${SLIM_ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
+
+response_code=$(tail -n1 <<< "$response")  # Extract the last line (HTTP response code)
+
+echo "HTTP response code: $response_code"  # Print the response code
+
+xrayReport=$(head -n -1 <<< "$response")  # Extract the content without the last line (response code)
+
+
+
 
 echo "${xrayReport}" >> /tmp/artifact-xray;#Uploading report to Artifact
 
