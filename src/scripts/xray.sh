@@ -82,7 +82,10 @@ response=$(curl -s -o - -w "\n%{http_code}" -L -u ":${SLIM_API_TOKEN}" -X 'GET' 
 
 response_code=$(tail -n1 <<< "$response")  # Extract the last line (HTTP response code)
 
-echo "HTTP response code: $response_code"  # Print the response code
+if [ "$response_code" != "200" ]; then
+    echo "Error: Failed to fetch xrayReport. HTTP response code: $response_code"
+    exit 1
+fi
 
 xrayReport=$(head -n -1 <<< "$response")  # Extract the content without the last line (response code)
 
