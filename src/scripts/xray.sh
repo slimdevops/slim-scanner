@@ -72,7 +72,6 @@ while [[ ${executionStatus} != "completed" ]]; do
 done
 #printf 'XRAY Completed state= %s '"$executionStatus \n"
 #Fetching the X-ray Report
-echo Fetching XRAY report : "${PARAM_IMAGE}"
 response=$(curl -s -o - -w "\n%{http_code}" -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
   "${apiDomain}/orgs/${SLIM_ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
