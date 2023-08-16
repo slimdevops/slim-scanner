@@ -1,5 +1,9 @@
 description: >
   Generate a Container Profile and Multi-Engine Vulnerability Report for a given container using the Slim Developer Platform. The generated reports will be uploaded to CircleCI's Artifacts tab as a JSON document.
+    The environment variables CONNECTOR_ID, SLIM_ORG_ID and SLIM_API_TOKEN must be set for this orb to work.  
+    CONNECTOR_ID: You can find your CONNECTOR_ID in the "My Registries" section of the Slim Platform.
+    SLIM_ORG_ID: Your SLIM_ORG_ID can be located in the "Personal Information" section, specifically under "Organizations" in the Slim Platform.
+    SLIM_API_TOKEN: To obtain your SLIM_API_TOKEN, navigate to the "Personal Information" section in the Slim Platform and then proceed to the "Tokens" subsection.
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
