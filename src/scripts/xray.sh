@@ -50,11 +50,22 @@ jsonDataUpdated=${jsonDataUpdated//__REPO__/"${entity}"}
 jsonDataUpdated=${jsonDataUpdated//__COMMAND__/${command}}
 jsonDataUpdated=${jsonDataUpdated//__TAG__/${tag}}
 #Starting Xray Scan
-xrayRequest=$(curl -u ":${SLIM_API_TOKEN}" -X 'POST' \
+xrayRequestResponse=$(curl -s -o - -w "\n%{http_code}" -u ":${SLIM_API_TOKEN}" -X 'POST' \
   "${apiDomain}/orgs/${SLIM_ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
+
+response_code=$(tail -n1 <<< "$xrayRequestResponse")  # Extract the last line (HTTP response code)
+
+if [ "$response_code" != "200" ]; then
+    echo "Error: Engine execution failed for Xray. HTTP response code: $response_code"
+    exit 1
+fi
+
+xrayRequest=$(head -n -1 <<< "$xrayRequestResponse") 
+
+
 
 executionId=$(jq -r '.id' <<< "${xrayRequest}")
 

@@ -48,13 +48,20 @@ jsonDataUpdated=${jsonDataUpdated//__TAG__/${tag}}
 
 
 #Starting Vulnarability Scan
-vscanRequest=$(curl -u ":${SLIM_API_TOKEN}" -X 'POST' \
+vscanRequestResponse=$(curl -s -o - -w "\n%{http_code}" -u ":${SLIM_API_TOKEN}" -X 'POST' \
   "${apiDomain}/orgs/${SLIM_ORG_ID}/engine/executions" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d "${jsonDataUpdated}")
 
+response_code=$(tail -n1 <<< "$vscanRequestResponse")  # Extract the last line (HTTP response code)
 
+if [ "$response_code" != "200" ]; then
+    echo "Error: Engine execution failed for Vscan. HTTP response code: $response_code"
+    exit 1
+fi
+
+vscanRequest=$(head -n -1 <<< "$vscanRequestResponse") 
 
 
 
@@ -78,10 +85,21 @@ printf 'Vulnerability scan Completed state= %s '"$executionStatus \n"
 #Fetching the report of Vulnarability Scan
 echo Fetching Vulnerability scan report : "${PARAM_IMAGE}"
 
-vscanReport=$(curl -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
+response=$(curl -s -o - -w "\n%{http_code}" -L -u ":${SLIM_API_TOKEN}" -X 'GET' \
   "${apiDomain}/orgs/${SLIM_ORG_ID}/engine/executions/${executionId}/result/report" \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json')
+
+
+response_code=$(tail -n1 <<< "$response")  # Extract the last line (HTTP response code)
+
+if [ "$response_code" != "200" ]; then
+    echo "Error: Failed to fetch vscanReport. HTTP response code: $response_code"
+    exit 1
+fi
+
+vscanReport=$(head -n -1 <<< "$response") 
+
 
 shaId=$(jq -r '.image.digest' <<< "${vscanReport}")
 connectorData=$(jq -r '.image.connector' <<< "${vscanReport}")
