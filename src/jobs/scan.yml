@@ -1,5 +1,6 @@
 description: >
-  Generate a Container Profile and Multi-Engine Vulnerability Report for a given container using the Slim Developer Platform. The generated reports will be uploaded to CircleCI's Artifacts tab as a JSON document.
+  Generate a Container Profile and Multi-Engine Vulnerability Report for a given container using the Slim Developer Platform. 
+  The generated reports will be uploaded to CircleCI's Artifacts tab as a JSON document.
 # What will this job do?
 
 docker:
